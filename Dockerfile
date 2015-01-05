@@ -1,14 +1,13 @@
 FROM jpetazzo/dind
-MAINTAINER breerly
+MAINTAINER Dave <goodoi09@gmail.com>
 
 RUN echo "deb http://repos.mesosphere.io/ubuntu/ trusty main" > /etc/apt/sources.list.d/mesosphere.list
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF
 
-RUN apt-get -y update
+RUN apt-get -y update && apt-get -y install \
+	mesos=0.21.0-1.0.ubuntu1404 \
+	supervisor
 
-RUN apt-get -y install mesos=0.20.1-1.0.ubuntu1404
-
-RUN apt-get -y install supervisor
 ADD supervisord.conf /etc/supervisor/supervisord.conf
 ADD start-slave.sh /start-slave.sh
 RUN chmod +x /start-slave.sh

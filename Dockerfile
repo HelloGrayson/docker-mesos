@@ -9,6 +9,8 @@ RUN apt-get -y update
 RUN apt-get -y install mesos=0.20.1-1.0.ubuntu1404
 
 RUN apt-get -y install supervisor
+RUN apt-get -y install unzip
+
 ADD supervisord.conf /etc/supervisor/supervisord.conf
 ADD start-slave.sh /start-slave.sh
 RUN chmod +x /start-slave.sh

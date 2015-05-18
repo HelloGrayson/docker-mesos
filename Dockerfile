@@ -5,7 +5,7 @@ RUN echo "deb http://repos.mesosphere.io/ubuntu/ trusty main" > /etc/apt/sources
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF
 
 RUN apt-get -y update && apt-get -y install \
-	mesos=0.22.0-1.0.ubuntu1404 \
+	mesos=0.22.1-1.0.ubuntu1404 \
 	supervisor
 
 ADD supervisord.conf /etc/supervisor/supervisord.conf
